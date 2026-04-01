@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakesh Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      background:#070b14;
+      color:aqua;
+      font-family: 'Segoe UI', sans-serif;
+      text-align:center;
+      margin:0;
+    }
+    html { scroll-behavior:smooth; }
+
+    /* Nav Bar */
+    nav.nav-wrapper {
+      width:90%;
+      margin:20px auto;
+      padding:12px 5px;
+      background:#0b1220;
+      border-radius:50px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    .logo { color:white; font-size:18px; font-weight:600; }
+    .nav-menu {
+      display:flex;
+      gap:25px;
+      background-color:#0e1628;
+      padding:8px 20px;
+      border-radius:40px;
+      list-style:none;
+    }
+    .nav-menu a {
+      text-decoration:none;
+      color:#9aa4b2;
+      font-size:14px;
+      padding:8px 18px;
+      border-radius:20px;
+      transition:0.3s;
+    }
+    .nav-menu a:hover { color:white; }
+    .nav-menu a.active {
+      color:white;
+      background-color:#00c8ff;
+      box-shadow:0 0 10px #00c8ff;
+    }
+    .talk-btn {
+      background:#00c8ff;
+      border:none;
+      padding:10px 22px;
+      border-radius:25px;
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .talk-btn:hover { box-shadow:0 0 15px #00c8ff; }
+
+    /* Sections */
+    section { padding:80px 20px; min-height:100vh; }
+    .home{ height: 100vh; }
+
+    /* Home Buttons */
+    .home-buttons{ margin-top:30px; display:flex; justify-content:center; gap:20px; }
+    .btn{
+      padding:12px 28px;
+      background:#00f7ff;
+      color:#000;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:600;
+      box-shadow:0 0 15px #00f7ff;
+      transition:0.3s;
+    }
+    .btn:hover{
+      background:transparent;
+      color:#00f7ff;
+      border:2px solid #00f7ff;
+      box-shadow:0 0 20px #00f7ff;
+    }
+
+    /* Skills */
+    .skills-container { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:40px; }
+    .skill-group {
+      background:#0e1628;
+      padding:20px;
+      border-radius:15px;
+      box-shadow:0 0 15px rgba(0,255,255,0.2);
+      min-width:220px;
+    }
+    .skill-group h3 { margin-bottom:15px; color:#00f7ff; text-align:center; }
+    .skill-list { display:flex; flex-direction:column; gap:10px; }
+    .skill-box {
+      padding:10px;
+      border:1px solid cyan;
+      border-radius:8px;
+      text-align:center;
+      box-shadow:0 0 10px cyan;
+    }
+
+    /* Projects */
+    .project-container {
+      width:300px;
+      height:150px;
+      border-radius:15px;
+      background:#111;
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:auto;
+      cursor:pointer;
+      box-shadow:0 0 20px #00f2ff;
+      transition:0.3s;
+      margin-bottom:20px;
+    }
+    .project-container:hover {
+      transform:scale(1.05);
+      box-shadow:0 0 30px #00f2ff;
+    }
+    .project-container a { text-decoration:none; color:white; }
+
+    #home img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+
+  border: 3px solid #00f7ff;
+  box-shadow: 0 0 20px #00f7ff;
+  transition: 0.3s;
+}
+
+#home img:hover {
+  box-shadow: 0 0 40px #00f7ff;
+  transform: scale(1.05);
+}
+    /* Social Icons */
+    .social-icons{ margin-top:25px; }
+    .social-icons a{ margin:0 15px; display:inline-block; transition:0.3s; }
+    .social-icons a:hover{ transform:scale(1.2); }
+    /* Default icon color */
+.social-icons i {
+  color: #9aa4b2;
+  transition: 0.3s;
+}
+
+/* Individual brand hover colors */
+.social-icons a:nth-child(1):hover i { /* GitHub */
+  color: #ffffff;
+}
+
+.social-icons a:nth-child(2):hover i { /* LinkedIn */
+  color: #0077b5;
+}
+
+.social-icons a:nth-child(3):hover i { /* Instagram */
+  color: #e1306c;
+}
+
+.social-icons a:nth-child(4):hover i { /* Facebook */
+  color: #1877f2;
+}
+
+    /* Contact */
+    .contact-container{ display:flex; justify-content:center; margin-top:30px; }
+    form{ width:350px; display:flex; flex-direction:column; gap:15px; }
+    form input, form textarea{
+      padding:12px;
+      border-radius:8px;
+      border:2px solid cyan;
+      background:#0e1628;
+      color:white;
+      outline:none;
+    }
+    form input:focus, form textarea:focus{ box-shadow:0 0 10px cyan; }
+    form button{
+      padding:12px;
+      border:none;
+      background:#00f7ff;
+      color:black;
+      font-weight:bold;
+      border-radius:25px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    form button:hover{
+      background:transparent;
+      color:#00f7ff;
+      border:2px solid #00f7ff;
+      box-shadow:0 0 15px #00f7ff;
+    }
+
+    /* Education */
+    /* Timeline container */
+.edu-container {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  padding-left: 20px;
+}
+
+/* Vertical line */
+.edu-container::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #00f7ff;
+}
+
+/* Each card */
+.edu-card {
+  position: relative;
+  margin-bottom: 30px;
+  margin-left: 30px; /* 👈 THIS CREATES GAP */
+  padding: 20px 20px 20px 50px;
+  background: #0e1628;
+  border-radius: 10px;
+  border: 1px solid #00f7ff;
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+}
+
+/* Circle dot on line */
+.edu-card::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 25px;
+  width: 15px;
+  height: 15px;
+  background: #00f7ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00f7ff;
+}
+    /* Mobile Responsive */
+    @media (max-width:768px){
+      nav.nav-wrapper{ flex-direction:column; gap:10px; padding:15px; }
+      .nav-menu{ flex-wrap:wrap; justify-content:center; gap:10px; }
+      .home { height:auto; }
+      img { width:150px; height:150px; }
+      .home-buttons{ flex-direction:column; gap:15px; }
+      .skills-container{ flex-direction:column; align-items:center; }
+      .project-container{ width:90%; }
+      form{ width:90%; }
+      h1{ font-size:24px; }
+      p{ font-size:14px; }
+      .edu-container{ flex-direction:column; align-items:center; }
+    }
+    /* 1. Social Icons Hover Color */
+.social-icons a:hover i {
+  color: #00f7ff; /* Brand color effect on hover */
+}
+
+/* 2. Make project links full clickable */
+.project-container a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 3. Scroll offset for sticky nav */
+html {
+  scroll-padding-top: 80px; /* adjust according to nav height */
+}
+
+
+
+/* 5. Subtle shadow for skill boxes */
+.skill-box {
+  box-shadow: 0 0 8px cyan;
+}
+
+/* 6. Optional: Alternate section background for readability */
+section:nth-of-type(even) {
+  background: #0b1220; /* slightly lighter than body */
+}
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav-wrapper">
+    <div class="logo">Rakesh_code</div>
+    <ul class="nav-menu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="talk-btn">Let's Talk</button>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h1>Welcome to my portfolio</h1>
+    <img src="rakesh.jpeg" width="200" height="200" alt="Rakesh">
+    <p>Hi I'm Rakesh - a passionate B.Tech student and aspiring full stack developer.</p>
+    <p>I love coding, solving problems, and building powerful web applications.</p>
+    <p>Currently learning web development, Python and data structures to reach elite level.</p>
+    <p>My goal is to master technology and build projects that make real impact.</p>
+    <p>Stay connected and explore my journey in the world of tech.</p>
+
+    <div class="home-buttons">
+      <a href="#projects" class="btn">View Projects</a>
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+
+    <h2>Follow me on</h2>
+    <div class="social-icons">
+      <!-- Github -->
+      <a href="https://github.com/orumpatirakesh257-orp/orumpatirakesh" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/orumpati-rakesh-600a553b6" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/orumpati_rakesh" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/share/1EEi1rgs6k/" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h1>About Me</h1>
+    <p>Hello! I'm Rakesh, a passionate web developer and B.Tech student. I am currently learning HTML, CSS, and JavaScript and building responsive websites to improve my skills.</p>
+
+    <!-- Education Cards -->
+    <div class="edu-container">
+      <div class="edu-card">
+        <h2>SSC</h2>
+        <p><strong>Academic Year:</strong> 2022 – 2023</p>
+        <p><strong>Score:</strong> 92.67%</p>
+        <p><strong>School:</strong> Ongole Oxford E.M High School</p>
+      </div>
+      <div class="edu-card">
+        <h2>Intermediate</h2>
+        <p><strong>Academic Year:</strong> 2023 – 2025</p>
+        <p><strong>Score:</strong> 94.5%</p>
+        <p><strong>College:</strong> Sri Viveka Junior College</p>
+      </div>
+      <div class="edu-card">
+        <h2>B.Tech (AI & ML)</h2>
+        <p><strong>Academic Year:</strong> 2025 – Present</p>
+        <p><strong>Status:</strong> Currently Pursuing</p>
+        <p><strong>College:</strong> Dr. M.G.R Educational and Research Institute</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h1>Skills</h1>
+    <div class="skills-container">
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <div class="skill-list">
+          <div class="skill-box">HTML</div>
+          <div class="skill-box">CSS</div>
+          <div class="skill-box">JavaScript</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="skill-list">
+          <div class="skill-box">C Language</div>
+          <div class="skill-box">Python</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Backend</h3>
+        <div class="skill-list">
+          <div class="skill-box">Node.js</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h1>Projects</h1>
+    <div class="project-container"><a href="calculator/calculator.html"><h2>Calculator</h2></a></div>
+    <div class="project-container"><a href="campusproject/home1.html"><h2>Campus Lost & Found Portal</h2></a></div>
+    <div class="project-container"><a href="video_editing/index.html"><h2>Rakesh_editing</h2></a></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h1>Contact Me</h1>
+    <p>If you want to collaborate or have any questions, feel free to contact me.</p>
+    <div class="contact-container">
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script>
+    // Active Nav Highlight
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navLinks.forEach(link => link.classList.remove("active"));
+          const activeLink = document.querySelector(`.nav-menu a[href="#${entry.target.id}"]`);
+          if(activeLink) activeLink.classList.add("active");
+        }
+      });
+    }, { threshold:0.2, rootMargin:"-100px 0px -100px 0px" });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
