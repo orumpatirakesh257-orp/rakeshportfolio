@@ -405,55 +405,6 @@
     .devicon-git-plain { color: #f05032; }
     .devicon-github-original { color: #fff; }
 
-    /* ========== Projects ========== */
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 36px;
-      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0, 229, 255, 0.3);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
-    }
-
-    .project-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .project-card p {
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      line-height: 1.7;
-    }
-
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .tech-tag {
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 20px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--border);
-    }
-
-    .project-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
 
     /* ========== Testimonials ========== */
     .testimonials-grid {
@@ -632,9 +583,6 @@
         display: none;
       }
 
-      .project-card {
-        padding: 24px;
-      }
     }
   </style>
 </head>
@@ -650,7 +598,6 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -666,7 +613,7 @@
         <span class="typing-text" id="typing-text"></span><span class="typing-cursor" aria-hidden="true"></span>
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
         <!-- PLACEHOLDER: Replace href with your resume PDF URL -->
         <a href="#" class="btn btn-outline" id="resume-download-hero" download>Download Resume</a>
       </div>
@@ -683,11 +630,6 @@
       <div class="stat-item">
         <span class="stat-value">5 Months</span>
         <span class="stat-label">Experience</span>
-      </div>
-      <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-item">
-        <span class="stat-value">1</span>
-        <span class="stat-label">Project Completed</span>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
       <div class="stat-item">
@@ -744,31 +686,6 @@
     </div>
   </section>
 
-  <!-- ========== PROJECTS ========== -->
-  <section id="projects">
-    <h2 class="section-title fade-in">Projects</h2>
-    <article class="project-card fade-in">
-      <h3>Calculator &amp; Scientific Calculator</h3>
-      <p>
-        A fully functional Calculator and Scientific Calculator built with HTML, CSS, and JavaScript. Supports standard arithmetic as well as advanced scientific functions like trigonometry, logarithms, and square roots. Clean UI with responsive design.
-      </p>
-      <div class="tech-tags">
-        <span class="tech-tag">HTML</span>
-        <span class="tech-tag">CSS</span>
-        <span class="tech-tag">JavaScript</span>
-      </div>
-      <div class="project-actions">
-        <!-- PLACEHOLDER: Replace # with your GitHub repo URL -->
-        <a href="#" class="btn btn-outline btn-sm project-github" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <!-- PLACEHOLDER: Replace # with your live demo URL -->
-        <a href="#" class="btn btn-primary btn-sm project-demo" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-external-link-alt"></i> Live Demo
-        </a>
-      </div>
-    </article>
-  </section>
 
   <!-- ========== TESTIMONIALS ========== -->
   <section id="testimonials">
@@ -836,8 +753,6 @@
       resume: '#',           // e.g. './resume.pdf' or full URL
       github: '#',           // e.g. 'https://github.com/yourusername'
       linkedin: '#',        // e.g. 'https://linkedin.com/in/yourprofile'
-      projectGithub: '#',    // Calculator repo URL
-      projectDemo: '#'       // Calculator live demo URL
     };
 
     /* ========== Apply placeholder links ========== */
@@ -855,12 +770,6 @@
       if (gh) gh.href = PLACEHOLDERS.github;
       if (li) li.href = PLACEHOLDERS.linkedin;
 
-      document.querySelectorAll('.project-github').forEach((el) => {
-        el.href = PLACEHOLDERS.projectGithub;
-      });
-      document.querySelectorAll('.project-demo').forEach((el) => {
-        el.href = PLACEHOLDERS.projectDemo;
-      });
 
       // Disable placeholder links until URLs are set
       [gh, li, ...resumeLinks].forEach((el) => {
@@ -870,12 +779,6 @@
         }
       });
 
-      document.querySelectorAll('.project-github, .project-demo').forEach((el) => {
-        if (el.getAttribute('href') === '#') {
-          el.style.pointerEvents = 'none';
-          el.style.opacity = '0.6';
-        }
-      });
     }
 
     /* ========== Typing effect (vanilla JS) ========== */
